@@ -1,35 +1,44 @@
-const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");
-const out = document.querySelector(".out");
-const img = new Image();
-img.src = "DVD_logo.svg";
+const img = document.querySelector("#img");
 
-let x = 400;
-let y = 300;
-let xSpeed = 1;
-let ySpeed = 1;
+const width = window.innerWidth;
+const height = window.innerHeight;
+const logoWidth = 200;
+const logoHeight = 102;
 
-canvas.width = 800;
-canvas.height = 600;
+let r, g, b;
 
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+let x = random(0, width - logoWidth),
+  y = random(0, height - logoHeight),
+  xSpeed = 1,
+  ySpeed = 1;
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function draw() {
-  clearCanvas();
-  ctx.drawImage(img, x, y, 120, 80);
   x = x + xSpeed;
   y = y + ySpeed;
 
-  if (x + 120 == canvas.width || x == 0) {
+  img.style.top = y + "px";
+  img.style.left = x + "px";
+
+  if (x + logoWidth >= width || x <= 0) {
     xSpeed = -xSpeed;
+    img.style.fill = `rgb(${(r = random(0, 255))}, ${(g = random(
+      0,
+      255
+    ))}, ${(b = random(0, 255))})`;
   }
-  if (y + 80 == canvas.height || y == 0) {
+  if (y + logoHeight >= height || y <= 0) {
     ySpeed = -ySpeed;
+    img.style.fill = `rgb(${(r = random(0, 255))}, ${(g = random(
+      0,
+      255
+    ))}, ${(b = random(0, 255))})`;
   }
+
+  img.style.display = "block";
 }
 
 setInterval(draw, 10);
-
-console.log(img);

@@ -1,10 +1,14 @@
 body {
   margin: 0;
+  position: relative;
+  background-color: black;
 }
 
-canvas {
-  margin: 20px;
-  width: 800px;
-  height: 600px;
-  background-color: aqua;
+#img {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: green;
+  display: none;
 }
