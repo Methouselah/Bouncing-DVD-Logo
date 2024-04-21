@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+}
+
+canvas {
+  margin: 20px;
+  width: 800px;
+  height: 600px;
+  background-color: aqua;
+}
