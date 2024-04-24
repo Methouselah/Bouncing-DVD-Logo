@@ -21,6 +21,27 @@ window.addEventListener("resize", function () {
   height = window.innerHeight;
 });
 
+// Функция для определения типа устройства
+const detectDevice = () => {
+  const userAgent = navigator.userAgent;
+
+  if (/Android/i.test(userAgent)) {
+    return "Android";
+  } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+    return "iOS";
+  } else if (/Windows Phone|Windows NT/i.test(userAgent)) {
+    return "Windows Phone";
+  } else if (/BlackBerry/i.test(userAgent)) {
+    return "BlackBerry";
+  } else if (/Mobile/i.test(userAgent)) {
+    return "Mobile (generic)";
+  } else if (/Tablet|iPad/i.test(userAgent)) {
+    return "Tablet (generic)";
+  } else {
+    return "Desktop";
+  }
+};
+
 function draw() {
   x = x + xSpeed;
   y = y + ySpeed;
